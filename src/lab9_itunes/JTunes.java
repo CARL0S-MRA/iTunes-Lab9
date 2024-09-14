@@ -18,25 +18,6 @@ public class JTunes extends javax.swing.JFrame {
     */
     
     
-    /*private void addSong(){
-        int codigo = Integer.parseInt(txtagregarCodigo.getText());
-        String nombre = txtagregarNombre.getText();
-        double precio = Double.parseDouble(txtagregarPrecio.getText());
-        
-        if (searchSong(codigo) !=null) {
-            JOptionPane.showMessageDialog(null, "Ya existe una cancion con ese codigo");
-            return;
-        }
-        for (int i = 0; i < canciones.length; i++) {
-            if (canciones[i] == null) {
-                canciones[i] = new Song(codigo, nombre, precio);
-                JOptionPane.showMessageDialog(null,"Cancion agregada con exito!");
-                return;
-            }
-        }
-    }
-    */
-    
     private Song searchSong(int codigo){
         for (Song cancion : canciones) {
             if (cancion !=null && cancion.getCodigo() == codigo) {
@@ -47,16 +28,6 @@ public class JTunes extends javax.swing.JFrame {
     }
     
    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
    
@@ -84,6 +55,9 @@ public class JTunes extends javax.swing.JFrame {
         txtrateEstrellas = new javax.swing.JTextField();
         bnAgregar = new javax.swing.JButton();
         bnCalificar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtBuscarCodigo = new javax.swing.JTextField();
+        bnBuscarCancion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +94,15 @@ public class JTunes extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Codigo");
+
+        bnBuscarCancion.setText("Search");
+        bnBuscarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnBuscarCancionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,7 +112,7 @@ public class JTunes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(260, 260, 260)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(135, 135, 135))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -154,20 +137,27 @@ public class JTunes extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLcodigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtrateCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtrateCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(204, 204, 204)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLEstrellas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtrateEstrellas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(498, 498, 498)
-                        .addComponent(ITUNES, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(bnAgregar)
-                        .addGap(301, 301, 301)
-                        .addComponent(bnCalificar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ITUNES, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(bnAgregar)
+                .addGap(301, 301, 301)
+                .addComponent(bnCalificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bnBuscarCancion)
+                .addGap(141, 141, 141))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +174,9 @@ public class JTunes extends javax.swing.JFrame {
                     .addComponent(txtagregarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLNombre)
                     .addComponent(jLcodigo)
-                    .addComponent(txtrateCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtrateCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCodigo)
@@ -195,13 +187,11 @@ public class JTunes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLprecio)
                     .addComponent(txtagregarPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(bnAgregar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(bnCalificar)))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bnAgregar)
+                    .addComponent(bnCalificar)
+                    .addComponent(bnBuscarCancion))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
 
@@ -251,6 +241,17 @@ public class JTunes extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_bnAgregarActionPerformed
+
+    private void bnBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnBuscarCancionActionPerformed
+        int codigo = Integer.parseInt(txtBuscarCodigo.getText());
+        Song cancion = searchSong(codigo);
+        
+        if (cancion !=null) {
+            JOptionPane.showMessageDialog(null,"Cancion encontrada!");
+        }else{
+            JOptionPane.showMessageDialog(null,"No existe una cancion con ese codigo");
+        }
+    }//GEN-LAST:event_bnBuscarCancionActionPerformed
 //--------------------------------------
     /**
      * @param args the command line arguments
@@ -290,6 +291,7 @@ public class JTunes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ITUNES;
     private javax.swing.JButton bnAgregar;
+    private javax.swing.JButton bnBuscarCancion;
     private javax.swing.JButton bnCalificar;
     private javax.swing.JLabel jLCodigo;
     private javax.swing.JLabel jLEstrellas;
@@ -297,9 +299,11 @@ public class JTunes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLcodigo;
     private javax.swing.JLabel jLprecio;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtBuscarCodigo;
     private javax.swing.JTextField txtagregarCodigo;
     private javax.swing.JTextField txtagregarNombre;
     private javax.swing.JTextField txtagregarPrecio;
